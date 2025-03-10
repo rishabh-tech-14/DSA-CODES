@@ -1,1 +1,3 @@
-The number is not prime
+1
+2
+1

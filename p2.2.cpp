@@ -5,9 +5,10 @@ int main(){
     string s;
     cin>>s;
 
-    int hash[26] = {0};
+    int hash[256] = {0};
     for(int i = 0 ; i<s.length() ; i++){
-        hash[s[i]-'a']++;
+        // hash[s[i]-'a']++;
+        hash[s[i]]++;
     }
 
     int q;
@@ -15,7 +16,8 @@ int main(){
     while(q--){
         char num;
         cin>>num;
-        cout<<hash[num-'a']<<endl;
+        // cout<<hash[num-'a']<<endl;
+        cout<<hash[num]<<endl;
     }
 
     return 0;

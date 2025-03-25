@@ -1,28 +1,37 @@
 #include<iostream>
 using namespace std;
 
-int main(){
-    int a;
-    cin>>a;
-
-    int arr[a];
-    for(int i = 0 ; i<a ; i++){
-        cin>>arr[i];
-    }
-
-    for(int i = 0 ; i<3 ; i++){
-        int count = 0;
-        int q;
-        cin>>q;
-        for(int j = 0 ; j<a ; j++){
-            if(q==arr[j]){
-                count +=1;
-            }
-            else continue;
-            
+int partition(int a[] , int low , int high){
+    int pivot = a[low];
+    int i = low;
+    int j = high;
+    while(i<j){
+        while(a[i]<=pivot && i<=high-1){
+            i++;
         }
-        cout<<count<<endl;
+        while(a[j]>=pivot && j>=low+1){
+            j--;
+        }
+        if(i<j) swap(a[i],a[j]);
+    }
+    swap(a[low],a[j]);
+    return j;
+}
+
+void quicksort(int a[] , int low , int high){
+    if(low<high){
+        int pindex = partition(a, low , high);
+        quicksort(a,low,pindex-1);
+        quicksort(a,pindex+1,high);
+    }
+}
+
+int main(){
+    int a[] = {1,4,2,6,5,4,9};
+    quicksort(a,0,7-1);
+    for(int i = 0 ; i<7; i++){
+        cout<<a[i]<<" ";
     }
 
-    return 0;
+    return 0 ;
 }
